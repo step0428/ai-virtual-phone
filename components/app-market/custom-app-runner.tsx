@@ -2010,7 +2010,7 @@ export function CustomAppRunner({
           title={app.name}
           className="custom-app-runner-frame"
           sandbox="allow-scripts allow-downloads"
-          allow={app.id === "study.supervisor" ? "autoplay; camera" : "autoplay"}
+          allow={app.id === "study.supervisor" ? "autoplay; camera; microphone" : "autoplay"}
           onLoad={syncHostedSafeArea}
           srcDoc={srcDoc}
         />
