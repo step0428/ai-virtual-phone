@@ -834,6 +834,7 @@ export function CustomAppRunner({
   const isBackgroundRunner = Boolean(backgroundEvent || backgroundTool);
   const effectiveEmbedded = embedded || isBackgroundRunner;
   const srcDoc = useMemo(() => createCustomAppSrcDoc(app, frameId, launchContext, effectiveEmbedded), [app, frameId, launchContext, effectiveEmbedded]);
+  const iframeAllow = app.id === "study.supervisor" ? "camera" : undefined;
   const syncHostedSafeArea = useCallback(() => {
     const frame = iframeRef.current;
     if (!frame) return;
@@ -2009,7 +2010,7 @@ export function CustomAppRunner({
           title={app.name}
           className="custom-app-runner-frame"
           sandbox="allow-scripts allow-downloads"
-          allow="autoplay"
+          allow={app.id === "study.supervisor" ? "autoplay; camera" : "autoplay"}
           onLoad={syncHostedSafeArea}
           srcDoc={srcDoc}
         />
